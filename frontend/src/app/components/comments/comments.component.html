@@ -1,0 +1,11 @@
+<div class="comments-container">
+  <div *ngIf="comments.length > 0">
+    <div *ngFor="let comment of comments">
+      <p><strong>{{ comment.author.username }}:</strong> {{ comment.content }}</p>
+      <button (click)="likeComment(comment._id)">Like ({{ comment.likes.length }})</button>
+      <button *ngIf="comment.author._id === authService.getUserId()" (click)="removeComment(comment._id)">Remove</button>
+    </div>
+  </div>
+  <input [(ngModel)]="newCommentContent" placeholder="Add a comment">
+  <button (click)="addComment()">Add Comment</button>
+</div>

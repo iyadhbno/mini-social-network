@@ -1,0 +1,13 @@
+<header>
+    <div class="header-content">
+      <div class="left">
+        <button (click)="logout()">Logout</button>
+      </div>
+      <div class="center">
+        <h1>Mini Social Network</h1>
+      </div>
+      <div class="right">
+        <span *ngIf="authService.isAuthenticated()">{{ authService.getUsername() }}</span>
+      </div>
+    </div>
+  </header>

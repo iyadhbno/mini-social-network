@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container">
+  <div class="new-post">
+    <h2>Create a new post</h2>
+    <textarea [(ngModel)]="newPostContent" placeholder="What's on your mind?"></textarea>
+    <button (click)="createPost()">Post</button>
+  </div>
+  <div class="posts-list" *ngIf="posts.length > 0">
+    <h2>Posts</h2>
+    <div *ngFor="let post of posts" class="post-card">
+      <p><strong>{{ post.author.username }}:</strong> {{ post.content }}</p>
+      <button (click)="likePost(post._id)">Like ({{ post.likes.length }})</button>
+      <button *ngIf="post.author._id === authService.getUserId()" (click)="deletePost(post._id)">Delete</button>
+      <app-comments [postId]="post._id"></app-comments>
+    </div>
+  </div>
+  <div class="pagination">
+    <button (click)="loadPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="loadNextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
