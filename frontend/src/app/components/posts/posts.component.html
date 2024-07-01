@@ -1,22 +1,29 @@
 <app-header></app-header>
-<div class="container">
-  <div class="new-post">
-    <h2>Create a new post</h2>
-    <textarea [(ngModel)]="newPostContent" placeholder="What's on your mind?"></textarea>
-    <button (click)="createPost()">Post</button>
-  </div>
-  <div class="posts-list" *ngIf="posts.length > 0">
-    <h2>Posts</h2>
-    <div *ngFor="let post of posts" class="post-card">
-      <p><strong>{{ post.author.username }}:</strong> {{ post.content }}</p>
-      <button (click)="likePost(post._id)">Like ({{ post.likes.length }})</button>
-      <button *ngIf="post.author._id === authService.getUserId()" (click)="deletePost(post._id)">Delete</button>
-      <app-comments [postId]="post._id"></app-comments>
+<div class="container mt-4">
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Create a new post</h5>
+      <div class="form-group">
+        <textarea class="form-control" [(ngModel)]="newPostContent" rows="3" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <button class="btn btn-primary" (click)="createPost()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
     </div>
   </div>
-  <div class="pagination">
-    <button (click)="loadPreviousPage()" [disabled]="currentPage === 1">Previous</button>
-    <span>Page {{ currentPage }} of {{ totalPages }}</span>
-    <button (click)="loadNextPage()" [disabled]="currentPage === totalPages">Next</button>
+
+  <div class="card mb-3" *ngFor="let post of posts">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">{{ post.author.username }}</h6>
+      <p class="card-text">{{ post.content }}</p>
+      <button class="btn btn-light" (click)="likePost(post._id)">
+        <i class="fas fa-heart" [ngClass]="{'text-danger': post.likes.includes(authService.getUserId())}"></i>
+      </button>
+      <span>{{ post.likes.length }}</span>
+      <button *ngIf="post.author._id === authService.getUserId()" class="btn btn-light" (click)="deletePost(post._id)">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
+    <app-comments [postId]="post._id"></app-comments>
   </div>
 </div>

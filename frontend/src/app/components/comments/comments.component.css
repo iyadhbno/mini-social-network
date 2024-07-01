@@ -1,24 +1,25 @@
 .comments-container {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+.comments-container p {
+  margin: 0;
+}
+
+.mat-icon-button {
+  margin-right: 10px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.comment-card {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .mat-form-field {
+    font-size: 14px;
   }
-  
-  .comments-container p {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-  }
-  
-  .comments-container input {
-    width: calc(100% - 120px);
-    margin-right: 10px;
-    display: inline-block;
-  }
-  
-  .comments-container button {
-    width: 100px;
-    display: inline-block;
-  }
+}

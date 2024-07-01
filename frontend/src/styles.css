@@ -1,43 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h2 {
-    color: #333;
-  }
+  background-color: #f8f9fa;
+}
 
-  h1{
-    text-align: center;
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  border-radius: 10px;
+}
+
+.btn-light {
+  border-radius: 50%;
+}
+
+.btn-primary {
+  border-radius: 50%;
+}
+
+.text-danger {
+  color: red !important;
+}
+
+@media (max-width: 600px) {
+  .form-group textarea {
+    font-size: 14px;
   }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-  }
-  
+}

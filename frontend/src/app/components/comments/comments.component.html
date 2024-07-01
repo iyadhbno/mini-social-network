@@ -1,11 +1,25 @@
-<div class="comments-container">
+<div class="container mt-4">
   <div *ngIf="comments.length > 0">
-    <div *ngFor="let comment of comments">
-      <p><strong>{{ comment.author.username }}:</strong> {{ comment.content }}</p>
-      <button (click)="likeComment(comment._id)">Like ({{ comment.likes.length }})</button>
-      <button *ngIf="comment.author._id === authService.getUserId()" (click)="removeComment(comment._id)">Remove</button>
+    <div *ngFor="let comment of comments" class="card mb-2">
+      <div class="card-body">
+        <p class="card-text"><strong>{{ comment.author.username }}:</strong> {{ comment.content }}</p>
+        <button class="btn btn-light" (click)="likeComment(comment._id)">
+          <i class="fas fa-heart" [ngClass]="{'text-danger': comment.likes.includes(authService.getUserId())}"></i>
+        </button>
+        <span>{{ comment.likes.length }}</span>
+        <button *ngIf="comment.author._id === authService.getUserId()" class="btn btn-light" (click)="removeComment(comment._id)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
     </div>
   </div>
-  <input [(ngModel)]="newCommentContent" placeholder="Add a comment">
-  <button (click)="addComment()">Add Comment</button>
+  <div class="mt-4">
+    <div class="form-group">
+      <textarea class="form-control" [(ngModel)]="newCommentContent" rows="2" placeholder="Add a comment" required></textarea>
+      <div class="text-danger" *ngIf="newCommentContent.trim().length === 0">Comment content is required</div>
+    </div>
+    <button class="btn btn-primary" (click)="addComment()">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
 </div>

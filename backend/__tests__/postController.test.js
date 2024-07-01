@@ -155,7 +155,7 @@ describe('Post Controller', () => {
       const mockPost = {
         _id: 'mockPostId',
         author: 'mockUserId',
-        remove: jest.fn().mockResolvedValue({}),
+        deleteOne: jest.fn().mockResolvedValue({}),
       };
       
       Post.findById.mockResolvedValue(mockPost);
@@ -166,7 +166,7 @@ describe('Post Controller', () => {
       await deletePost(mockRequest, mockResponse);
 
       expect(Comment.deleteMany).toHaveBeenCalledWith({ post: 'mockPostId' });
-      expect(mockPost.remove).toHaveBeenCalled();
+      expect(mockPost.deleteOne).toHaveBeenCalled(); 
       expect(mockResponse.json).toHaveBeenCalledWith({ message: 'Post deleted successfully' });
     });
 

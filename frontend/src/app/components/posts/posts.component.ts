@@ -3,12 +3,26 @@ import { PostService } from '../../services/post.service';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { CommentsComponent } from '../comments/comments.component';
 import { HeaderComponent } from '../header/header.component';
+
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [CommonModule, FormsModule, CommentsComponent, HeaderComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    CommentsComponent,
+    HeaderComponent
+  ],
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
